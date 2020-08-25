@@ -1,28 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="utf-8">
 	<title>LOGIN</title>
-    <style type="text/css">
-    	form{
-    		padding
-    	}
-    </style>
+	<script src="https://kit.fontawesome.com/a56db9830e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
- <form action="login.php" method="POST">
- 	<table>
- 		<tr>
- 			<td><p>Username: </p></td><td><input type="text" name="username" id="username"></td>
- 		</tr>
- 		<tr>
- 			<td><p>Password: </p></td><td><input type="password" name="password" id="password"></td>
- 		</tr>
- 		<tr>
- 			<td><input type="submit" name="login_btn" id="login_btn"></td>
- 		</tr>
- 	</table>
-     	
- </form>
- 
-</body>
+	<div class="login-box">
+		<h1> Login </h1>
+ 		<form action="login.php" method="POST">
+ 			<div class="textbox">
+ 				<i class="fas fa-user"></i>
+ 				<input type="text" placeholder="Username" name="" value="">
+ 			</div>
+ 			<div class="textbox">
+ 				<i class="fas fa-lock"></i>
+ 				<input type="password" placeholder="Password" name="" value="">
+ 			</div>
+ 			
+ 			<input class="btn" type="button" name="" value="Login">
+     	</form>
+	</div>
+ </body>
 </html>
