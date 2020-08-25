@@ -1,4 +1,4 @@
-<?php require_once("include/db_connect.php");?>
+<?php require_once("include/db_connect.php");?>  
 <?php
 
 	function storeUser($username, $email, $password){
@@ -55,16 +55,21 @@
 	}
     
     //Function to check whether the username exists in the database or not
+    //BEfore signing up auser we have to check whether username already exists or not
+    //$username-> data from the user when the user signs up
 	function usernameExists($username){
-		global $connection;
+		global $connection; //connection variable from the previous script
+		//SQL query to fetch username where username is $usrename
 		$query = "SELECT username from users where username = '{$username}'";
-
-		$result = mysqli_query($connection, $query);
-
-		if(mysqli_num_rows($result) > 0){
-			return true;
-		}else{
-			return false;
+        
+		$result = mysqli_query($connection, $query); //we pass connection variable and query to this function and store it in result
+        //the function inside if statement will return value of how many number of rows are fetched from the above query
+        //If someone types name that already is in the database then there will be value 
+        //greater than 0
+		if(mysqli_num_rows($result) > 0){ //Bujhey mysql_num_rows()?
+			return true; //If there is already that username then this username() function
+		}else{//returns true
+			return false; //else flase
 		}
 	}
 	function uploadImage($file_url,$user_id){

@@ -9,16 +9,17 @@ if(isset($_POST['signup_btn'])) {
    $s_email = $_POST['s_email'];
    $s_pass = $_POST['s_pass'];
    
-   if (usernameExists($s_uname)) {
-   	   	echo "Username Already Exists";
-   }else{
+   if (usernameExists($s_uname)) { //If username entered by the user is already in DB then
+   	   	echo "Username Already Exists"; //the function inside if will be true as we saw
+   }else{ //and if username is not there then
+    //we call the storeUser()
         $user = storeUser($s_uname,$s_email,$s_pass);
         if ($user) {
         	alert_func("Rgistration successfull Please Login");
 
         }else{
         	echo "User registrationfailed please try again";
-        }
+        } //Lets se this code running 
 
    }
 
