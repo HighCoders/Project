@@ -14,6 +14,8 @@
 		die("Database connnection failed " . "(" .
 			mysqli_connect_error() . " - " . mysqli_connect_errno() . ")"
 				);
+	}else{
+		echo "Connected to Database";
 	}
 
 ?>

@@ -100,7 +100,7 @@
    }
 //Alert function
    function alert_func($message){
-   	echo "<script>alert('$message')</script>";
+   	echo "<script>alert('$message')	</script>";
    }
  
 ?>

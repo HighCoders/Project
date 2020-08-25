@@ -12,6 +12,7 @@ if(isset($_POST['login_btn'])) {
    	   header("Location:homepage.html");
    }else{
    	alert_func("Incorrect username or password");
+    
    }
 
 }
