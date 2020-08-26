@@ -1,22 +1,58 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>LOGIN</title>
+	<script src="https://kit.fontawesome.com/a56db9830e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="login.css">
+    <link rel="script" type="script" href="script/script.js">
+</head>
+<body>
+	<?php
+	session_start();
+      //If user is already logged in then redirect the user to homepage
+	if (isset($_SESSION['u_name'])){
+		header("Location: homepage.php");
+	}
 
-//require_once 'source/session.php';
-require_once 'include/functions.php'; ///Here we have included the functions.php file 
-
-if(isset($_POST['login_btn'])) { //Here were givingg a condition if user clicks the login button well run the code below 
-	//Storing from data to a variable
-
-   $login_username = $_POST['username']; //We had used POST method so the form data will be inside POST array dekhdaii chau??
-   $login_password = $_POST['password']; //we take the form data from the POST array and assign it to variables
-   //Now let's see what this function does
-   //OKay?
-   if (getUserByUsernameAndPassword($login_username,$login_password)) {
-   	   header("Location:homepage.html");
-   }else{
-   	alert_func("Incorrect username or password");
-    
-   }
-
-}
-
-?>
+	?>
+	<div class="login-box">
+		<h1> Login </h1>
+ 		<form action="login_proc.php" method="POST">
+ 			<div class="textbox">
+ 				<i class="fas fa-user"></i>
+ 				<input type="text" placeholder="Username" name="u_name" value="" id="u">
+ 						<?php
+     	 $fullURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+     	 if(strpos($fullURL,"username=empty")){
+     	 	echo "<p class='error'>*Please enter username<p>";
+     	 }
+         ?>
+     
+ 			</div>
+ 			<div class="textbox">
+ 				<i class="fas fa-lock"></i>
+ 				<input type="password" placeholder="Password" name="u_pass" value="" id="p">
+ 								<?php
+     	 $fullURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+     	 if(strpos($fullURL,"paswword=empty")){
+     	 	echo "<p class='error'>*Please enter password<p>";
+     	 }
+         ?>
+ 			</div>
+ 			
+ 			<input class="btn" type="submit" name="login_btn" value="Login">
+ 			<?php
+     	 $fullURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+     	 if(strpos($fullURL,"credentials=incorrect")){
+     	 	echo "<p class='error'>Incorrect credentials ! Please try again<p>";
+     	 }
+         ?>
+         <p align="center">Not Registered?<a href="signup.php">Sign Up </a><p>
+     	</form>
+     	
+	</div>
+<script>
+</script>
+ </body>
+</html>

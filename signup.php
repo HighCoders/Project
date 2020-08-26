@@ -1,28 +1,42 @@
-<?php
-
-//require_once 'source/session.php';
-require_once 'include/functions.php';
-
-if(isset($_POST['signup_btn'])) {	
-	//Storing from data to a variable
-   $s_uname = $_POST['s_name'];
-   $s_email = $_POST['s_email'];
-   $s_pass = $_POST['s_pass'];
-   
-   if (usernameExists($s_uname)) { //If username entered by the user is already in DB then
-   	   	echo "Username Already Exists"; //the function inside if will be true as we saw
-   }else{ //and if username is not there then
-    //we call the storeUser()
-        $user = storeUser($s_uname,$s_email,$s_pass);
-        if ($user) {
-        	alert_func("Rgistration successfull Please Login");
-
-        }else{
-        	echo "User registrationfailed please try again";
-        } //Lets se this code running 
-
-   }
-
-}
-
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>SIGNUP</title>
+	<script src="https://kit.fontawesome.com/a56db9830e.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="login.css">
+</head>
+<body>
+	<div class="login-box">
+		<h1>Sign Up</h1>
+ 		<form action="signup_proc.php" method="POST">
+ 			<div class="textbox">
+ 				<i class="fas fa-user"></i>
+ 				<input type="text" placeholder="Username" required="required" name="s_name">
+ 				<p id="username_validator"></p>
+ 			</div>
+ 			<div class="textbox">
+ 				<i class="fas fa-envelope"></i>
+ 				<input type="email" placeholder="E-mail" required="required" name="s_email">
+ 			</div>
+ 			<div class="textbox">
+ 				<i class="fas fa-lock"></i>
+ 				<input type="password" placeholder="Password" required="required" name="s_pass">
+ 			</div>
+ 			<div class="textbox">
+ 				<i class="fas fa-lock"></i>
+ 				<input type="password" placeholder="Confirm Password" required="required" name="s_c_pass">
+ 			</div>
+ 			<input class="btn" type="submit" value="Signup" name="signup_btn">
+ 			 <?php
+     	     $fullURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+     	     if(strpos($fullURL,"pw=nm")){
+     	 	 echo "<p class='error'>*Passwords do not match<p>";
+     	     }
+             ?>
+ 			<p align="center">Already Signed Up?<a href="login.php"> Login</a><p>
+ 	       
+     	</form>
+     </div>
+</body>
+</html>

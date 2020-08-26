@@ -59,3 +59,8 @@ body{
 	cursor:pointer;
 	margin:12px 0;
 }
+.error {
+	color: red;
+	text-align: : center;
+	font-size: 4px;
+}

@@ -1,4 +1,4 @@
-<?php require_once("include/db_connect.php");?>  
+<?php require_once("db_connect.php");?>  
 <?php
 
 	function storeUser($username, $email, $password){
@@ -40,6 +40,22 @@
 		}
 	}
 
+	function getUserId($username, $password){
+		global $connection;
+		$query = "SELECT id from users where username = '{$username}' and password = '{$password}'";
+	
+		$id = mysqli_query($connection, $query);
+		
+		if($id){
+			while ($res = mysqli_fetch_assoc($id)){
+				return $id;
+			}
+		}
+		else{
+			return false;
+		}
+	}
+
 
 	function emailExists($email){
 		global $connection;
@@ -55,8 +71,6 @@
 	}
     
     //Function to check whether the username exists in the database or not
-    //BEfore signing up auser we have to check whether username already exists or not
-    //$username-> data from the user when the user signs up
 	function usernameExists($username){
 		global $connection; //connection variable from the previous script
 		//SQL query to fetch username where username is $usrename

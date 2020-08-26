@@ -17,8 +17,11 @@
   	 	<ul>
   	  		<li><a class="active" href="#">Home</a></li>
   	  		<li><a href="#">Gallery</a></li>
-  	  		<li><a href="#">Profile</a></li>
+  	  		<li><a href="logout.php">Logout</a></li>
+        </form>
      	</ul>
   	</nav>
+
+    <h1>WELCOME <?php session_start(); echo $_SESSION['u_name'];?><h2>
 </body>
 </html>
