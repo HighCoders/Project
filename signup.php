@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +14,16 @@
  			<div class="textbox">
  				<i class="fas fa-user"></i>
  				<input type="text" placeholder="Username" required="required" name="s_name">
- 				<p id="username_validator"></p>
+ 				
+
  			</div>
+              <?php
+             $fullURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+             if(strpos($fullURL,"uname=ex")){
+             echo "<p class='error'>*Username already exists<p>";
+             }
+             
+             ?>
  			<div class="textbox">
  				<i class="fas fa-envelope"></i>
  				<input type="email" placeholder="E-mail" required="required" name="s_email">
@@ -31,9 +40,9 @@
  			 <?php
      	     $fullURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
      	     if(strpos($fullURL,"pw=nm")){
-     	 	 echo "<p class='error'>*Passwords do not match<p>";
-     	     }
-             ?>
+     	 	   echo "<p class='error'>*Passwords do not match<p>";
+     	     } ?>
+             
  			<p align="center">Already Signed Up?<a href="login.php"> Login</a><p>
  	       
      	</form>
